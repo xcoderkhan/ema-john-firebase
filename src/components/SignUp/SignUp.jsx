@@ -27,7 +27,17 @@ const SignUp = () => {
                                     </Link>
                                 </div>
                             </div>
+                            <div className="mt-2">
+                                <input type="password" name="password" autoCapitalize="current-password" placeholder="Input your password" required className="block w-full rounded-md border-0 py-1 5 text-gray-900 shadow-sm ring-1 ring-insert ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-red-200 sm:text-sm sm:leading-6" />
+                            </div>
+                            <div className="mt-5">
+                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
+                            </div>
+                            <div className="mt-2">
+                                <input type="password" name="confirmpassword" autoCapitalize="confirm-password" placeholder="Input your password" required className="block w-full rounded-md border-0 py-1 5 text-gray-900 shadow-sm ring-1 ring-insert ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-red-200 sm:text-sm sm:leading-6" />
+                            </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>
