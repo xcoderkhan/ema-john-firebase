@@ -37,8 +37,18 @@ const SignUp = () => {
                                 <input type="password" name="confirmpassword" autoCapitalize="confirm-password" placeholder="Input your password" required className="block w-full rounded-md border-0 py-1 5 text-gray-900 shadow-sm ring-1 ring-insert ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-red-200 sm:text-sm sm:leading-6" />
                             </div>
                         </div>
-                        
+                        <div>
+                            <button type="submit" className="flex w-full justify-center rounded-md bg-cyan-300 px-3 py-1 5 text-sm font-bold leading-6 text-white shadow-sm hover:bg-red-200 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-red-400">Register</button>
+                        </div>
                     </form>
+                </div>
+                <div className="mt-4 grid grid-cols-3 items-center sm:mx-auto sm:w-full sm:max-w-sm">
+                    <hr className=" border-gray-300" />
+                    <p className="text-center text-cyan-300">Or</p>
+                    <hr className=" border-gray-300" />
+                </div>
+                <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
+                    <button type="submit" className="flex w-full justify-center rounded-md bg-cyan-300 px-3 py-1 5 text-sm font-bold leading-6 text-white shadow-sm hover:bg-red-200 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-red-400">Sign with Google</button>
                 </div>
             </div>
         </>
