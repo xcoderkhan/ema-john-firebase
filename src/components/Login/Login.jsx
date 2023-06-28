@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.jsx'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../../auth/Provider/AuthProvider/AuthProvider.jsx';
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
+
+    const handleSign = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+    }
+
     return (
         <>
             <section className="bg-gray-50 min-h-screen flex items-center justify-center">
@@ -12,7 +24,7 @@ const Login = () => {
                     <div className="sm:w-1/2 text-green-800 px-10 pt-5">
                         <h2 className="font-bold text-2x">Login</h2>
                         <p className="text-sm mt-1">If you already register, Login here!!</p>
-                        <form action="#" className="flex flex-col gap-3">
+                        <form onSubmit={handleSign} className="flex flex-col gap-3">
                             <input type="email" name="email" placeholder="Input your email" required className="p-2 mt-5 rounded-xl border" />
                             <div className=" relative">
                                 <input type="password" name="password" placeholder="Input your password" className="p-2 rounded-xl border w-full" />
