@@ -9,12 +9,22 @@ const Login = () => {
 
     const { signIn } = useContext(AuthContext);
 
-    const handleSign = (event) => {
+    const handleSignIn = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const userSignIn = result.user;
+                console.log(userSignIn);
+            })
+            .catch(error => {
+                console.log(error);
+                form.reset();
+        })
     }
 
     return (
@@ -24,7 +34,7 @@ const Login = () => {
                     <div className="sm:w-1/2 text-green-800 px-10 pt-5">
                         <h2 className="font-bold text-2x">Login</h2>
                         <p className="text-sm mt-1">If you already register, Login here!!</p>
-                        <form onSubmit={handleSign} className="flex flex-col gap-3">
+                        <form onSubmit={handleSignIn} className="flex flex-col gap-3">
                             <input type="email" name="email" placeholder="Input your email" required className="p-2 mt-5 rounded-xl border" />
                             <div className=" relative">
                                 <input type="password" name="password" placeholder="Input your password" className="p-2 rounded-xl border w-full" />
