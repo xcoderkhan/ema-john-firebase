@@ -26,7 +26,7 @@ const Header = () => {
                 <Link to="/inventory">Inventory</Link>
                 <Link to="/login">Login</Link>
                 {
-                    user && <span className='text-white p-2'>{user.email}<button onClick={handleLoggedOut} className=' px-2 mx-2 rounded-lg bg-red-300'>Logged Out</button></span>
+                    user && <span className='text-white p-2'>{user.email}<button onClick={handleLoggedOut} className=' px-2 mx-2 rounded-lg bg-red-300'>Log Out</button></span>
                 }
             </div>
         </nav>

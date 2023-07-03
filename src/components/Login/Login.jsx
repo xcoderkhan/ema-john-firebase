@@ -1,13 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.jsx'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../auth/Provider/AuthProvider/AuthProvider.jsx';
 
 const Login = () => {
 
+    const [show, setShow] = useState(false);
+
     const { signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -20,11 +27,13 @@ const Login = () => {
             .then(result => {
                 const userSignIn = result.user;
                 console.log(userSignIn);
+                form.reset();
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
                 form.reset();
-        })
+            })
     }
 
     return (
@@ -37,10 +46,12 @@ const Login = () => {
                         <form onSubmit={handleSignIn} className="flex flex-col gap-3">
                             <input type="email" name="email" placeholder="Input your email" required className="p-2 mt-5 rounded-xl border" />
                             <div className=" relative">
-                                <input type="password" name="password" placeholder="Input your password" className="p-2 rounded-xl border w-full" />
-                                <>
-                                    <FontAwesomeIcon icon={faEye} className=" absolute top-1/2 right-3 -translate-y-1/2" />
-                                </>
+                                <input type={show ? "text" : "password"} name="password" placeholder="Input your password" className="p-2 rounded-xl border w-full" />
+                                <div onClick={() => setShow(!show)}>
+                                    {
+                                        show ? <FontAwesomeIcon icon={faEye} className=" absolute top-1/2 right-3 -translate-y-1/2" /> : <FontAwesomeIcon icon={faEyeSlash} className=" absolute top-1/2 right-3 -translate-y-1/2" />
+                                    }
+                                </div>
                             </div>
                             <button type="submit" className="bg-cyan-300 text-white rounded-xl py-2">Login</button>
                         </form>
